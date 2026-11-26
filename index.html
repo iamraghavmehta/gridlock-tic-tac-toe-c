@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GridLock | 3x3 Tic-Tac-Toe Game Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav-bar">
+      <div class="logo">
+        <span class="logo-grid">&#9638;</span>
+        <span class="logo-title">GRIDLOCK</span>
+      </div>
+      <div class="header-links">
+        <a href="https://github.com/iamraghavmehta/gridlock-tic-tac-toe-c" class="btn btn-outline" target="_blank" rel="noreferrer">GitHub Repository</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <div class="hero-center">
+      <div class="badge">2D Array Algorithms & Matrix Win Detection</div>
+      <h1>GridLock Arena</h1>
+      <p class="subtitle">Experience the game in your browser or explore the underlying standard C matrix algorithm.</p>
+    </div>
+
+    <div class="game-layout">
+      <!-- Game Container -->
+      <div class="card game-card">
+        <div class="game-status-bar">
+          <div id="statusText" class="status-indicator">Player X's Turn</div>
+          <div class="mode-toggle">
+            <button id="pvpModeBtn" class="mode-btn active">Two-Player</button>
+            <button id="aiModeBtn" class="mode-btn">vs Bot</button>
+          </div>
+        </div>
+
+        <!-- 3x3 Grid -->
+        <div class="board" id="board">
+          <button class="cell" data-index="0" aria-label="Cell 1"></button>
+          <button class="cell" data-index="1" aria-label="Cell 2"></button>
+          <button class="cell" data-index="2" aria-label="Cell 3"></button>
+          <button class="cell" data-index="3" aria-label="Cell 4"></button>
+          <button class="cell" data-index="4" aria-label="Cell 5"></button>
+          <button class="cell" data-index="5" aria-label="Cell 6"></button>
+          <button class="cell" data-index="6" aria-label="Cell 7"></button>
+          <button class="cell" data-index="7" aria-label="Cell 8"></button>
+          <button class="cell" data-index="8" aria-label="Cell 9"></button>
+        </div>
+
+        <div class="game-controls">
+          <button id="restartBtn" class="btn btn-primary">Play Next Round</button>
+          <button id="resetScoreBtn" class="btn btn-sm btn-outline">Reset Scores</button>
+        </div>
+      </div>
+
+      <!-- Scoreboard & Algorithm Card -->
+      <div class="side-panel">
+        <div class="card score-card">
+          <h2>Session Scoreboard</h2>
+          <div class="scoreboard-grid">
+            <div class="score-box x-score">
+              <span class="player-tag">Player X</span>
+              <span class="score-val" id="scoreX">0</span>
+            </div>
+            <div class="score-box ties-score">
+              <span class="player-tag">Draws</span>
+              <span class="score-val" id="scoreDraws">0</span>
+            </div>
+            <div class="score-box o-score">
+              <span class="player-tag">Player O</span>
+              <span class="score-val" id="scoreO">0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card algo-card">
+          <h2>Matrix Win Evaluation</h2>
+          <p class="algo-desc">The C core uses 2D array coordinates <code>board[row][col]</code> to evaluate 8 victory vectors in O(1) time:</p>
+          <div class="code-preview">
+            <pre><code>// Horizontal scan
+for (int r = 0; r &lt; 3; r++)
+  if (board[r][0] == board[r][1] &amp;&amp; 
+      board[r][1] == board[r][2]) return board[r][0];
+
+// Main &amp; Anti Diagonals
+if (board[0][0] == board[1][1] &amp;&amp; 
+    board[1][1] == board[2][2]) return board[0][0];
+if (board[0][2] == board[1][1] &amp;&amp; 
+    board[1][1] == board[2][0]) return board[0][2];</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Part of Raghav Mehta's Engineering Portfolio &bull; Standard C & Web Engineering</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
